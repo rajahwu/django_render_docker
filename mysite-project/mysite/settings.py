@@ -78,7 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "mysite.wsgi.application"
 
-DEVELOPMENT_ENV = "DEVELOPMENT"
+DEVELOPMENT_ENV = os.environ.get('DEVELOPMENT_ENV')
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 if os.environ.get("ENVIRONMENT") == DEVELOPMENT_ENV:
