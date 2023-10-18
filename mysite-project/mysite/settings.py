@@ -96,6 +96,10 @@ else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
     }
+    
+print("DATABASE_URL:", os.environ.get('DATABASE_URL'))
+db_config = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+print("Database Configuration:", db_config)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
