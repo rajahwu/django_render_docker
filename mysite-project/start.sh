@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set -o errexit
+
 # Apply Django database migrations
-poerty run manage.py migrate
-poerty run manage.py createsu
+poetry run manage.py migrate
+poetry run manage.py createsu
 
 # Start your Django application
 exec "$@"
