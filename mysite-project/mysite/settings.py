@@ -81,21 +81,16 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 DEVELOPMENT_ENV = os.environ.get('DEVELOPMENT_ENV')
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-if os.environ.get("ENVIRONMENT") == DEVELOPMENT_ENV:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',  # Change this to your database name
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',  # Use the same password you set when starting the PostgreSQL container
-            'HOST': 'localhost',
-            'PORT': '5432'
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ.get('ENGINE'),
+        'NAME': os.environ.get('NAME'),  # Change this to your database name
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),  # Use the same password you set when starting the PostgreSQL container
+        'HOST': os.environ.get('HOST'),
+        'PORT': os.environ.get('PORT')
     }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(os.environ.get('DATABASE_URL'), conn_max_age=600),
-    }
+}
     
 print("DATABASE_URL:", os.environ.get('DATABASE_URL'))
 db_config = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
