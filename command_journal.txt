@@ -1,1 +1,7 @@
 docker run --name docker-render-postgres -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 postgres:latest
+  pg_ctlcluster 12 main start
+  psql -h your-database-hostname -U your-database-username -d your-database-name
+  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 7d0631a14d04
+
+
+
